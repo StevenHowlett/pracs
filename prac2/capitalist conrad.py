@@ -12,17 +12,19 @@ import random
 
 MAX_INCREASE = 0.175  # 10%
 MAX_DECREASE = 0.05  # 5%
-MIN_PRICE = 1.0
-MAX_PRICE = 100.0
+MIN_PRICE = 0.01
+MAX_PRICE = 1000.0
 INITIAL_PRICE = 10.0
 OUTPUT_FILE = "simple.txt"
 
 price = INITIAL_PRICE
 print("${:,.2f}".format(price))
+day =0
 out_file = open(OUTPUT_FILE,'w')
 
 while price >= MIN_PRICE and price <= MAX_PRICE:
     price_change = 0
+    day += 1
     # generate a random integer of 1 or 2
     # if it's 1, the price increases, otherwise it decreases
     if random.randint(1, 2) == 1:
@@ -35,5 +37,5 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-    print("${:,.2f}".format(price), file=out_file)
-out_file.closed()
+    print("On day {} price is: ${:,.2f}".format(day,price), file=out_file)
+out_file.close()
