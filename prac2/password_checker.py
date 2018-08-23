@@ -39,9 +39,9 @@ def is_valid_password(password):
     if length < MIN_LENGTH or length > MAX_LENGTH:
         return False
     for character in password:
-        if character.islower:
+        if character.islower():
             count_lower += 1
-        elif character.isupper:
+        elif character.isupper():
             count_upper += 1
         elif character.isdigit():
             count_digit += 1
